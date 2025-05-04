@@ -1,0 +1,62 @@
+<section>
+        <h1> Day 2 - Flow and Feel (29 April 2025)</h1>
+        <div id="description">
+            <p>
+                Wow, that was actually very nice. The fact that I did it with a video guide, Vinyasa 
+                Yoga with Bird, and she kept saying “take your time”, I really like it. I did not feel 
+                the pressure of having to do everything within a rigid time frame. I actually did a 
+                little “box” method breathing, which is like the 4-4-8, but with a 4-4-4 counting instead. 
+                This helped since the theme of vinyasa is actually the link between the movement and breath. 
+                The more I do the movements repeatedly in a  “Flowing” sequence, the more it is in tune with 
+                the breathing. I remember the movements being done in the vinyasa sequence were first taught 
+                by Sir Czy. With the Vinyasa sequence introduced, the routines were put together as if a puzzle 
+                was completed in a full, smooth routine.
+            </p>
+        </div>
+        <div id="images">
+            <img src="./Photos/2-1.PNG">
+            <img src="./Photos/2-2.PNG">
+            <img src="./Photos/2-3.PNG">
+        </div>
+    </section>
+
+    <section>
+        <h1> Day 3 - Walk with Awareness (30 April 2025)</h1>
+        <div id="description">
+            <p>
+                After an afternoon run, I went for a 15-minute walk to cooldown. Although I have been walking around the campus, 
+                I realized I have not been into some parts around the academic oval. I decided to walk using the “scenic route” 
+                along the Washington Sycip Garden of Native Trees. I found this relaxing. Instead of walking along the academic oval, 
+                I decided to walk along the park, along the University Amphitheater, and to the Portia Sanctuary. 
+                I focused on the scene around and reflected on the different activities the Academic oval caters simultaneously. 
+                It went dark quickly and I got to see the university with lights and still so many people going for running, 
+                walking, cycling - well, just about everything. I was walking with my running shoes but I took the time to be 
+                conscious about my breathing and the steps. 
+            </p>
+        </div>
+        <div id="images">
+            <img src="./Photos/3-1.jpeg">
+            <img src="./Photos/3-2.jpeg">
+            <img src="./Photos/3-3.PNG">
+        </div>
+    </section>
+
+    <section>
+        <h1> Day 4 - Catch-up and Move (1 May 2025)</h1>
+        <div id="description">
+            <p>
+                Thankfully, I do not have a lot of backlogs, so I am taking this time to organize my output. Reflecting on my 
+                movement improvements, I am amazed. Everytime someone asks me: “what PE class are you taking?” I would answer 
+                Mobility and Flexibility with pride. Naturally, they would ask what we do and so I say we do headstands in class 
+                and given I am in an appropriate attire, I would always give them a demo. During the first meeting, I also shared 
+                about unlocking movements that have been “lost” while we’re taught not to do “awkward” sitting, but then now, 
+                I get to revisit them in warmups, mobility routines, and yoga. Additionally, I am happy to report that I have not 
+                been visited by back pain for the longest time. I also shared the yoga routines with my Inang, who performs the 
+                routines regularly with our cats. The results not only helped her with the back pain, but also made her appreciate 
+                breathing more.
+            </p>
+        </div>
+        <div id="images">
+            <img src="./Photos/4-1.png">
+        </div>
+    </section>

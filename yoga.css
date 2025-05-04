@@ -1,0 +1,364 @@
+/* ========================================== */
+/* --- Global Styles & CSS Variables --- */
+/* ========================================== */
+:root {
+    /* --- Color Palette (Neutral & Professional) --- */
+    /* Backgrounds */
+    --color-bg-primary: #ffffff;       /* White page background */
+    --color-bg-secondary: #f8f9fa;   /* Very light grey for cards, sections */
+    --color-bg-tertiary: #e9ecef;    /* Slightly darker grey for header/footer */
+
+    /* Text */
+    --color-text-primary: #212529;   /* Very dark grey (near black) for main text, headings */
+    --color-text-secondary: #495057; /* Medium grey for less important text (author, captions) */
+    --color-text-accent: #6c757d;    /* Muted grey for subtle text (date, footer) */
+
+    /* Borders & Shadows */
+    --color-border: #dee2e6;       /* Light grey border */
+    --color-shadow: rgba(0, 0, 0, 0.075); /* Soft shadow for depth */
+
+    /* Links */
+    --color-link: #0d6efd;          /* Standard accessible blue link */
+    --color-link-hover: #0a58ca;   /* Darker blue on hover/focus */
+
+    /* --- Typography --- */
+    --font-family-base: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    --font-size-base: 1rem; /* Approx 16px, scales with root */
+    --font-weight-normal: 400;
+    --font-weight-bold: 700;
+    --line-height-base: 1.6; /* Generous line height for readability */
+
+    /* --- Layout & Spacing --- */
+    --container-max-width: 960px;      /* Max width for main content */
+    --spacing-unit: 1rem;              /* Base unit for padding/margins */
+    --border-radius: 6px;              /* Consistent rounded corners */
+}
+
+/* ========================================== */
+/* --- Base Reset & Body Styles --- */
+/* ========================================== */
+*,
+*::before,
+*::after {
+    box-sizing: border-box; /* Modern box model */
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%; /* Use browser default (usually 16px) */
+    scroll-behavior: smooth; /* Smooth scrolling for #day-X links */
+    height: 100%; /* Needed for full height layout */
+    -webkit-text-size-adjust: 100%; /* Prevent font scaling in landscape on iOS */
+}
+
+body {
+    font-family: var(--font-family-base);
+    font-size: var(--font-size-base);
+    line-height: var(--line-height-base);
+    color: var(--color-text-primary);
+    background-color: var(--color-bg-primary);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%; /* Ensure footer is pushed down on short pages */
+    margin: 0; /* Remove default body margin */
+}
+
+/* Make images responsive by default */
+img {
+    max-width: 100%;
+    height: auto; /* Maintain aspect ratio */
+    vertical-align: middle; /* Remove bottom space */
+    display: block; /* Ensure it behaves like a block */
+}
+
+/* Basic link styling */
+a {
+    color: var(--color-link);
+    text-decoration: none; /* Remove underline by default */
+    transition: color 0.2s ease-in-out;
+}
+
+a:hover,
+a:focus {
+    color: var(--color-link-hover);
+    text-decoration: underline; /* Add underline on hover/focus */
+}
+
+/* Headings styling */
+h1, h2, h3 {
+    margin-bottom: calc(var(--spacing-unit) * 0.75);
+    line-height: 1.3;
+    font-weight: var(--font-weight-bold);
+}
+
+/* Paragraph styling */
+p {
+    margin-bottom: var(--spacing-unit);
+    /* Use secondary text color for standard paragraphs for softer look */
+    color: var(--color-text-secondary);
+    text-align: left; /* Ensure left alignment */
+}
+
+/* Remove margin from the last element in a container */
+p:last-child,
+h3:last-child {
+     margin-bottom: 0;
+}
+
+/* ========================================== */
+/* --- Header Styles --- */
+/* ========================================== */
+.main-header {
+    background-color: var(--color-bg-tertiary);
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+    text-align: center;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: calc(var(--spacing-unit) * 1.5); /* Space below header */
+}
+
+.main-header h1 {
+    font-size: clamp(1.8rem, 5vw, 2.5rem); /* Responsive font size */
+    margin-bottom: calc(var(--spacing-unit) * 0.25);
+    color: var(--color-text-primary);
+}
+
+.main-header .author {
+    font-size: clamp(1rem, 3vw, 1.1rem);
+    color: var(--color-text-accent);
+    font-style: italic;
+    margin-bottom: var(--spacing-unit); /* Space before greeting */
+}
+
+.main-header .greeting {
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    color: var(--color-text-secondary);
+    max-width: 650px; /* Limit width of greeting text */
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 0; /* No margin below greeting */
+}
+
+/* ========================================== */
+/* --- Sticky Day Navigation --- */
+/* ========================================== */
+.day-navigation {
+    background-color: var(--color-bg-primary);
+    padding: calc(var(--spacing-unit) * 0.75) 0;
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: calc(var(--spacing-unit) * 2);
+    position: sticky; /* Make navigation stick to top on scroll */
+    top: 0; /* Stick to the very top */
+    z-index: 100; /* Ensure it stays above other content */
+    box-shadow: 0 2px 4px var(--color-shadow); /* Subtle shadow when sticky */
+    overflow-x: auto; /* Allow horizontal scrolling on very small screens if needed */
+    white-space: nowrap; /* Prevent wrapping inside the nav itself */
+}
+
+.day-navigation ul {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    /* Don't wrap here, let overflow-x handle it */
+    /* flex-wrap: wrap; */
+    gap: var(--spacing-unit);
+    padding: 0 var(--spacing-unit); /* Padding inside the scrollable area */
+    margin: 0; /* Reset ul margin */
+}
+
+.day-navigation li {
+     display: inline-block; /* Needed for nowrap */
+}
+
+.day-navigation li a {
+    font-weight: var(--font-weight-normal);
+    padding: 8px 15px;
+    border-radius: var(--border-radius);
+    transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    display: inline-block; /* Ensure padding is applied correctly */
+    color: var(--color-text-secondary);
+    white-space: nowrap; /* Prevent link text from wrapping */
+}
+
+.day-navigation li a:hover,
+.day-navigation li a:focus {
+     background-color: var(--color-bg-secondary);
+     text-decoration: none;
+     color: var(--color-text-primary);
+}
+
+
+/* ========================================== */
+/* --- Main Content & Day Entry Card --- */
+/* ========================================== */
+.challenge-log {
+    flex-grow: 1; /* Allows main content to push footer down */
+    width: 100%;
+    max-width: var(--container-max-width); /* Limit content width */
+    margin-left: auto;
+    margin-right: auto;
+    padding: 0 var(--spacing-unit); /* Padding on sides for smaller screens */
+}
+
+.day-entry {
+    background-color: var(--color-bg-primary); /* White card background */
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    margin-bottom: calc(var(--spacing-unit) * 2.5);
+    padding: calc(var(--spacing-unit) * 1.5); /* Internal padding */
+    box-shadow: 0 3px 6px var(--color-shadow); /* Subtle card shadow */
+    overflow: hidden; /* Contain margins/floats */
+}
+
+.day-header {
+    border-bottom: 1px solid var(--color-border);
+    margin-bottom: var(--spacing-unit);
+    padding-bottom: var(--spacing-unit);
+}
+
+.day-header h2 {
+    font-size: clamp(1.4rem, 4vw, 1.7rem); /* Responsive day title */
+    margin-bottom: 0.25rem;
+}
+
+.day-header time {
+    font-size: 0.9rem;
+    color: var(--color-text-accent);
+    display: block; /* Put date on its own line */
+}
+
+/* ========================================== */
+/* --- Photo Gallery Section --- */
+/* ========================================== */
+.photo-gallery {
+    margin-bottom: calc(var(--spacing-unit) * 1.5);
+}
+
+.photo-gallery h3 {
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+    margin-bottom: var(--spacing-unit);
+    color: var(--color-text-primary);
+}
+
+.gallery-images {
+    display: grid;
+    /* Responsive grid: Creates columns min 120px wide, max 1fr (equal). */
+    /* Adjust minmax values as needed based on your photos */
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: var(--spacing-unit);
+}
+
+.gallery-images figure {
+    margin: 0;
+    background-color: var(--color-bg-secondary);
+    border: 1px solid var(--color-border);
+    border-radius: var(--border-radius);
+    overflow: hidden; /* Keep image and caption within rounded borders */
+    display: flex; /* Use flex for better control over image/caption */
+    flex-direction: column; /* Stack image and caption vertically */
+    box-shadow: 0 1px 3px var(--color-shadow); /* Tiny shadow on each photo */
+}
+
+.gallery-images img {
+    width: 100%;
+    /* Give images a consistent aspect ratio box (e.g., 4:3) */
+    /* Adjust aspect-ratio based on your photo orientation */
+    aspect-ratio: 4 / 3;
+    object-fit: cover; /* Scale image nicely to cover the box */
+    border-bottom: 1px solid var(--color-border); /* Separator line */
+}
+
+.gallery-images figcaption {
+    padding: calc(var(--spacing-unit) * 0.5);
+    font-size: 0.85rem;
+    color: var(--color-text-secondary);
+    text-align: center;
+    background-color: var(--color-bg-secondary); /* Match figure background */
+    flex-grow: 1; /* Allow caption to take space if needed */
+    line-height: 1.4; /* Adjust caption line height */
+}
+
+/* ========================================== */
+/* --- Reflection Section --- */
+/* ========================================== */
+.reflection {
+    background-color: var(--color-bg-secondary); /* Light grey background */
+    padding: var(--spacing-unit);
+    border-radius: var(--border-radius);
+    border: 1px solid var(--color-border);
+    margin-top: var(--spacing-unit); /* Add space above reflection */
+}
+
+.reflection h3 {
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+    margin-bottom: calc(var(--spacing-unit) * 0.5);
+    color: var(--color-text-primary);
+}
+
+.reflection p {
+    /* Use primary text color for reflections for better readability */
+    color: var(--color-text-primary);
+    font-size: 0.95rem; /* Slightly smaller font for reflection text */
+    line-height: var(--line-height-base);
+}
+
+/* ========================================== */
+/* --- Footer Styles --- */
+/* ========================================== */
+.main-footer {
+    background-color: var(--color-bg-tertiary);
+    color: var(--color-text-accent);
+    text-align: center;
+    padding: calc(var(--spacing-unit) * 1.5) var(--spacing-unit);
+    margin-top: calc(var(--spacing-unit) * 2); /* Space above footer */
+    border-top: 1px solid var(--color-border);
+    font-size: 0.9rem;
+}
+
+/* ========================================== */
+/* --- Responsive Adjustments --- */
+/* ========================================== */
+
+/* Medium screens (tablets, small desktops) */
+@media (min-width: 768px) {
+    :root {
+        /* Slightly larger base font on larger screens */
+        --font-size-base: 1.0625rem; /* 17px */
+    }
+
+    .gallery-images {
+        /* Increase minimum image width on larger screens */
+        grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    }
+
+    .day-entry {
+        padding: calc(var(--spacing-unit) * 2); /* More internal padding in cards */
+    }
+}
+
+/* Smaller screens (most mobiles) */
+@media (max-width: 600px) {
+    .day-navigation ul {
+        justify-content: flex-start; /* Align nav items left for scrolling */
+        gap: calc(var(--spacing-unit) * 0.75); /* Slightly reduce gap */
+    }
+    .day-navigation li a {
+        padding: 6px 10px; /* Adjust padding for smaller targets */
+    }
+
+    .day-entry {
+        padding: var(--spacing-unit); /* Less padding inside cards */
+    }
+
+    .gallery-images {
+        /* Ensure minimum size isn't too small, maybe 2 columns */
+        grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+        gap: calc(var(--spacing-unit) * 0.75); /* Slightly smaller gap */
+    }
+     .gallery-images img {
+        /* Square aspect ratio might work better on small mobile grids */
+        /* aspect-ratio: 1 / 1; */
+        /* Keep 4:3 or adjust as needed */
+         aspect-ratio: 4 / 3;
+    }
+}
